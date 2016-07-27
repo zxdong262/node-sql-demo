@@ -27,6 +27,7 @@
     "koa": "^1.2.1",
     "koa-bodyparser": "^2.2.0",
     "koa-router": "^5.4.0",
+    "bluebird": "^3.4.1",
     "mysql": "^2.11.1"
   },
   "devDependencies": {
