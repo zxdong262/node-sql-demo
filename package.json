@@ -4,7 +4,9 @@
   "description": "a nodejs/mysql demo",
   "main": "app.js",
   "scripts": {
-    "test": "mocha"
+    "test": "npm-run-all -s dev test:mocha",
+    "dev": "node app",
+    "test:mocha": "mocha"
   },
   "repository": {
     "type": "git",
@@ -33,10 +35,11 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "npm-run-all": "^2.3.0",
     "mocha": "^2.5.3",
     "request": "^2.74.0"
-  }
+  },
   "engines": {
     "node": ">=6.0.0"
-  },
+  }
 }
