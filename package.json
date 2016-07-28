@@ -28,12 +28,15 @@
     "koa-bodyparser": "^2.2.0",
     "koa-router": "^5.4.0",
     "bluebird": "^3.4.1",
-    "mysql": "^2.11.1"
+    "mysql": "^2.11.1",
+    "sequelize": "^3.23.6"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.5.3",
-    "request": "^2.74.0",
-    "sequelize": "^3.23.6"
+    "request": "^2.74.0"
   }
+  "engines": {
+    "node": ">=6.0.0"
+  },
 }

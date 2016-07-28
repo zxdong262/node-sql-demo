@@ -4,11 +4,11 @@
 
 'use strict'
 
-let init = require('./lib/start').init
+let init = require('./lib/index').init
 ,co = require('co')
 ,config = require('./config')
 
-co(init())
+co(init(config))
 .then(function(app) {
 
 	app.listen(config.port, 'localhost', function() {

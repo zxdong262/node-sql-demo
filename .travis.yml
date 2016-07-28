@@ -1,0 +1,26 @@
+language: node_js
+sudo: required
+dist: trusty
+branches:
+  only:
+    - master
+    - dev
+node_js:
+  - "6"
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+    - mysql-server-5.6
+    - mysql-client-core-5.6
+    - mysql-client-5.6
+
+before_install:
+  - mysql -u root -e 'CREATE DATABASE test1;\
+                      CREATE USER test1user@localhost;\
+                      SET PASSWORD FOR test1user@localhost= PASSWORD("test1password");\
+                      GRANT ALL PRIVILEGES ON test1.* TO test1user@localhost IDENTIFIED BY 'test1password';\
+                      FLUSH PRIVILEGES;'
+before_script:
+  - cp config-sample.js config.js
