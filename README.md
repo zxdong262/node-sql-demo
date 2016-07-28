@@ -1,10 +1,11 @@
 # node-sql-demo
+[![Build Status](https://travis-ci.org/zxdong262/node-sql-demo.svg?branch=master)](https://travis-ci.org/zxdong262/node-sql-demo)
 
 ## run
 
 install mysql
 ```bash
-#ubuntu
+# ubuntu
 sudo apt-get install mysql-server mysql-client
 ```
 

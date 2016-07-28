@@ -22,5 +22,3 @@ before_install:
                       SET PASSWORD FOR test1user@localhost= PASSWORD("test1password");\
                       GRANT ALL PRIVILEGES ON test1.* TO test1user@localhost IDENTIFIED BY 'test1password';\
                       FLUSH PRIVILEGES;'
-before_script:
-  - cp config-sample.js config.js

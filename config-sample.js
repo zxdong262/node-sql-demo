@@ -1,5 +1,5 @@
 
-const 
+const Sequelize = require('sequelize')
 
 module.exports = {
 
@@ -43,7 +43,7 @@ module.exports = {
 		]
 
 		//another table name
-		Company: [
+		,Company: [
 
 			//table defination
 			{

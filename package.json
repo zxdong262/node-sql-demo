@@ -4,9 +4,9 @@
   "description": "a nodejs/mysql demo",
   "main": "app.js",
   "scripts": {
-    "test": "npm-run-all -s dev test:mocha",
-    "dev": "node app",
-    "test:mocha": "mocha"
+    "test": "npm run dev & npm run test1",
+    "dev": "node test/test-server",
+    "test1": "mocha test/test.js"
   },
   "repository": {
     "type": "git",
