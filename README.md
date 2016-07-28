@@ -34,5 +34,5 @@ cp config-sample.js config.js
 node app
 
 #or test
-npm run test
+npm run test2
 ```

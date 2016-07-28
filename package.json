@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "npm run dev & npm run test1",
+    "test2": "NODE_ENV=production npm-run-all -p dev test1",
     "dev": "node test/test-server",
     "test1": "mocha test/test.js"
   },
