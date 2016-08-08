@@ -33,6 +33,9 @@ module.exports = {
 				,age: {
 					type: Sequelize.INTEGER
 				}
+				,score: {
+					type: Sequelize.DOUBLE
+				}
 			}
 
 			//table option
@@ -52,6 +55,9 @@ module.exports = {
 				}
 				,desc: {
 					type: Sequelize.STRING
+				}
+				,score: {
+					type: Sequelize.DOUBLE
 				}
 			}
 

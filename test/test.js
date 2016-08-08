@@ -25,6 +25,7 @@ const chai = require('chai')
 	,update: `${uri}/update/user`
 	,del: `${uri}/del/user`
 	,get: `${uri}/get/user`
+	,trans: `${uri}/transaction`
 }
 
 describe(pkg.name, function() {
@@ -97,6 +98,8 @@ describe(pkg.name, function() {
 		})
 	})
 
+
+
 	it('del', function(done) {
 		var changed = 'zxd' + Math.random()
 		qr({
@@ -140,6 +143,89 @@ describe(pkg.name, function() {
 		.then(function(res) {
 			//console.log(res.body)
 			expect(res.body.length).to.equal(0)
+			done()
+		})
+	})
+
+	//transaction
+	it('transaction', function(done) {
+
+		var changed = 'zxd' + Math.random()
+		var changed1 = 'zxd' + Math.random()
+		qr({
+			uri: urls.add
+			,method: 'post'
+			,body: {
+				name: changed
+				,age: 333
+				,score: 3
+			}
+			,json: true
+		})
+		.then(function(res) {
+			return qr({
+				uri: urls.add
+				,method: 'post'
+				,body: {
+					name: changed1
+					,age: 333
+					,score: 3
+				}
+				,json: true
+			})
+		})
+		.then(function(res) {
+			return qr({
+				uri: urls.trans
+				,method: 'post'
+				,body: {
+					transaction: [
+						{
+							query: {
+								where: {
+									name: changed
+								}
+							}
+							,table: 'user'
+							,update: {
+								score: 'literal:score+1'
+							}
+						}
+						,{
+							query: {
+								where: {
+									name: changed1
+								}
+							}
+							,table: 'user'
+							,update: {
+								score: 'literal:score-1'
+							}
+						}
+					]
+				}
+				,json: true
+			})
+		})
+		.then(function(res) {
+			return qr({
+				uri: urls.get
+				,method: 'post'
+				,body: {
+					query: {
+						where: {
+							name: {
+								$in: [changed, changed1]
+							}
+						}
+					}
+				}
+				,json: true
+			})
+		})		
+		.then(function(res) {
+			expect(res.body[0].score).to.equal(4)
+			expect(res.body[1].score).to.equal(2)
 			done()
 		})
 	})

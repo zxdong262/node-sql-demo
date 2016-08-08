@@ -7,6 +7,8 @@ let init = require('../lib/index').init
 ,co = require('co')
 ,config = require('../config-sample')
 
+config.syncOption = { force: true }
+
 
 co(init(config))
 .then(function(app) {
