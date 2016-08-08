@@ -31,20 +31,25 @@ const chai = require('chai')
 describe(pkg.name, function() {
 
 	it('add', function(done) {
-		qr({
-			uri: urls.add
-			,method: 'post'
-			,body: {
-				name: 'zxd'
-				,age: 33
-			}
-			,json: true
-		})
-		.then(function(res) {
-			//console.log(res)
-			expect(res.body.name).to.equal('zxd')
-			done()
-		})
+		
+		this.timeout(30000)
+		setTimeout(function() {
+			qr({
+				uri: urls.add
+				,method: 'post'
+				,body: {
+					name: 'zxd'
+					,age: 33
+				}
+				,json: true
+			})
+			.then(function(res) {
+				//console.log(res)
+				expect(res.body.name).to.equal('zxd')
+				done()
+			})
+		}, 500)
+
 	})
 
 	it('update', function(done) {
